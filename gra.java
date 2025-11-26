@@ -5,8 +5,7 @@ public class gra {
     public static void main(String[] args) {
         
         Scanner scan = new Scanner(System.in);
-
-        int wspolne = 0;
+ 
         int y = 0;
         int attemptsLeft = 4;
         String odpowiedz;
@@ -23,15 +22,60 @@ public class gra {
         String random10;
         String random11;
         String random12;
+        int numerLos = 61;
 
         do {
             String[] bankSlow = {
-                "kernel", "matrix", "system", "vector","tablet","tramsformator"
+                "kernel", "matrix", "system", "vector", "tablet", "transformator",
+                "algorithm", "interface", "protocol", "network",
+                "firewall", "database", "gateway", "compiler",
+                "runtime", "package", "library", "framework",
+                "thread", "process", "endpoint", "function",
+                "variable", "instance", "object", "class",
+                "inheritance", "constructor", "parameter", "operator",
+                "pointer", "buffer", "register", "cache",
+                "filesystem", "cluster", "replica", "backup",
+                "monitor", "adapter", "router", "switch",
+                "ethernet", "wireless", "virtualization", "container",
+                "deployment", "encryption", "hash", "token",
+                "session", "latency", "bandwidth", "throughput",
+                "storage", "archive", "metadata", "checksum",
+                "exception", "iterator", "recursion", "syntax"
             };
 
             Random rand = new Random();{
-                random1 = bankSlow[rand.nextInt(bankSlow.length)];
+                random1 = bankSlow[rand.nextInt(numerLos)];
+
+                for(int i =0; i<bankSlow.length; i++){
+                    if(random1.equals((bankSlow[i]))){
+                        numerLos = i;
+                    
+
+                        String temp = bankSlow[i];
+
+                        
+                        
+                        
+
+                       
+
+                        
+                    };
+                }
+
+
+
+
+
+
                 y++;
+
+
+
+
+                //wylosowane slowo jako element tablicy kotry
+                //przenoszenie wylosowanego elementu na koniec taba
+                //skracanie zakresu losowania 
             }
 
             Random rand2 = new Random();{
@@ -90,12 +134,14 @@ public class gra {
                 y++;
             }
             
+            //Randomowe slowo
             String[] options = {random1, random2, random3, random4, random5, random6, random7, random8, random9,random10,random11,random12};
             Random randslowo = new Random();
             poprawneSlowo = options[randslowo.nextInt(options.length)];
 
         } while (y != 12);
 
+        //Główne menu
         do {
             System.out.println("ROBOCO INDUSTRIES (TM) TERMLINK PROTOCOL");
             System.out.println("!!! WARNING: LOCKOUT IMMINENT !!!");
@@ -110,7 +156,7 @@ public class gra {
             System.out.println(getRandomHex() + " >$#!{" + random11 + "}>$#!" + "              " + getRandomHex() + ">$#!{" + random12 + "}>$#!");
             System.out.println("");
 
-            System.out.println("Wpisz odpowiedz ");
+            System.out.print("Wpisz odpowiedz ");
             odpowiedz = scan.next();
 
             if (poprawneSlowo.equals(odpowiedz)) {
@@ -118,6 +164,7 @@ public class gra {
             attemptsLeft = 0;
             } else {
 
+                int wspolne = 0;
                 attemptsLeft = attemptsLeft-1;
                 String[] tab1 = odpowiedz.split("");
                 String[] tab2 = poprawneSlowo.split("");
@@ -130,21 +177,34 @@ public class gra {
                         }
                     }
                 }
+
+                System.out.println("");{
+                    System.out.println("Wspolne litery: "+ wspolne);
+                    System.out.println("");
+                }
+                
             }
 
-            System.out.println("");
-            System.out.println(wspolne);
+
+
 
         }while (attemptsLeft != 0);
+        
+        IO.println("");
+        IO.println("Odpowiedz to: " + poprawneSlowo);
 
-        IO.print(poprawneSlowo);
         scan.close();
     }
 
+
+    //randomowy hex
     public static String getRandomHex() {
         int value = new java.util.Random().nextInt(0x10000);
         return String.format("0x%04X", value);
     }
+
+
+
 }
    
 
